@@ -53,3 +53,10 @@ def health_check():
 # @app.get("/status")
 # def status():
 #     return {"status": "ok", "version": "1.0.0"}
+
+templates = Jinja2Templates(directory="app/templates")
+
+
+@app.get("/")
+async def home(request: Request):
+    return templates.TemplateResponse(request, "template.html", context={})
